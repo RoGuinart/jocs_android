@@ -1,0 +1,162 @@
+package com.example.jocs_guinart
+
+import android.content.Intent
+import android.graphics.Typeface
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
+
+class MainMenu : AppCompatActivity() {
+
+    lateinit var auth: FirebaseAuth;
+    var user:FirebaseUser? = null;
+
+    lateinit var tancarSessio:   Button;
+    lateinit var CreditsBtn:     Button;
+    lateinit var PuntuacionsBtn: Button;
+    lateinit var jugarBtn:       Button;
+
+    lateinit var miPuntuaciotxt: TextView;
+    lateinit var puntuacio:      TextView;
+    lateinit var uid:            TextView;
+    lateinit var correo:         TextView;
+    lateinit var nom:            TextView;
+
+    //reference serà el punter que ens envia a la base de dades de jugadors
+    lateinit var reference: DatabaseReference;
+
+    private val tf: Typeface = Typeface.createFromAsset(assets,"fonts/DSCaslonGotisch.ttf");
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_menu);
+
+        auth = FirebaseAuth.getInstance();
+        user = auth.currentUser;
+
+        tancarSessio = findViewById<Button>(R.id.tancarSessio);
+        CreditsBtn =  findViewById<Button>(R.id.CreditsBtn);
+        PuntuacionsBtn = findViewById<Button>(R.id.PuntuacionsBtn);
+        jugarBtn = findViewById<Button>(R.id.jugarBtn);
+
+        tancarSessio.typeface   = tf;
+        CreditsBtn.typeface     = tf;
+        PuntuacionsBtn.typeface = tf;
+        jugarBtn.typeface       = tf;
+
+        miPuntuaciotxt=findViewById(R.id.miPuntuaciotxt);
+        puntuacio=findViewById(R.id.puntuacio);
+        uid=findViewById(R.id.uid);
+        correo=findViewById(R.id.correo);
+        nom=findViewById(R.id.nom);
+
+        miPuntuaciotxt.typeface = tf;
+        puntuacio.typeface      = tf;
+        uid.typeface            = tf;
+        correo.typeface         = tf;
+        nom.typeface            = tf;
+
+//fem el mateix amb el text dels botons
+        tancarSessio.typeface = tf
+        CreditsBtn.typeface = tf
+        PuntuacionsBtn.typeface = tf
+        jugarBtn.typeface = tf
+
+        CreditsBtn.setOnClickListener(){
+            Toast.makeText(this,"Credits", Toast.LENGTH_SHORT).show();
+        }
+        PuntuacionsBtn.setOnClickListener(){
+            Toast.makeText(this,"Puntuacions", Toast.LENGTH_SHORT).show();
+        }
+        jugarBtn.setOnClickListener(){
+            Toast.makeText(this,"JUGAR", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // Aquest mètode s'executarà quan s'obri el minijoc
+    override fun onStart() {
+//        userLogged();
+        super.onStart();
+    }
+
+    private fun userLogged()
+    {
+        if(user!=null)
+        {
+            Toast.makeText(this, "Jugador logejat", Toast.LENGTH_SHORT).show();
+        } else
+        {
+            //val intent= Intent(this, MainActivity::class.java);
+            //startActivity(intent);
+            //finish();
+        }
+    }
+
+    private fun consulta(){
+//Amb Firebase no fem consultes realment, el que fem en connectar-nos a una referencia
+// i aquesta anirà canviant automàticament quan canvii la base de dades
+// reference apunta a "DATA BASE JUGADORS"
+// sempre es crea un referencia a un punt del arbre de la base de dades
+// Per exemple si tenim la base de dades
+// arrel
+// - nivell dos
+// - nivell dos.1
+// - nom: "pepe"
+// - dni: "1231212121"
+// - nivell dos.2: "34"
+// - nivell dos.3: "36"
+//var bdasereference:DatabaseReference = FirebaseDatabase.getInstance().getReference()
+// .child("nivell dos")
+// .child("nivell dos.1")
+// Ara estariem al novell dos.1 del arbre
+// Ens podem subscriure amb un listener que té dos métodes
+// onDataChange (es crida si s'actualitza les dades o és la primera vegada que ens suscribim)
+// onCancelled Es crida si hi ha un error o es cancel·la la lectura
+// al primer métode rebrem un objecte json que és la branca sobre la que demanem actualització
+// getkey retorna la clave del objecte
+// getValue retorna el valor
+// els subnodes (fills) es recuperen amb getChildren
+// es poden llegir com un llistat d'objectes Datasnapshots
+// o navegar a subnodes concrets amb child("nomdelsubnode")
+        var database: FirebaseDatabase = FirebaseDatabase.getInstance("https://montserratak-76f14-default-rtdb.europe-west1.firebasedatabase.app/");
+                var bdreference:DatabaseReference = database.getReference("DATABASE JUGADORS");
+        bdreference.addValueEventListener (object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                Log.i ("DEBUG","arrel value"+ snapshot.getValue().toString());
+                Log.i ("DEBUG","arrel key"+ snapshot.key.toString());
+// ara capturem tots els fills
+                var trobat:Boolean =false
+                for (ds in snapshot.getChildren()) {
+                    Log.i ("DEBUG","DS key: "+ds.child("Uid").key.toString());
+                                Log.i ("DEBUG","DS value: "+ds.child("Uid").getValue().toString());
+                                Log.i ("DEBUG","DS data: "+ds.child("Data").getValue().toString());
+                                Log.i ("DEBUG","DS mail: "+ds.child("Email").getValue().toString());
+//mirem si el mail és el mateix que el del jugador
+//si és així, mostrem les dades als textview  corresponents
+                        if
+                                (ds.child("Email").getValue().toString().equals(user?.email)){
+                            trobat=true
+//carrega els textview
+                            puntuacio.text = ds.child("Puntuacio").getValue().toString();
+                            uid.text = ds.child("Uid").getValue().toString();
+                            correo.text = ds.child("Email").getValue().toString();
+                            nom.text = ds.child("Nom").getValue().toString();
+                        }
+                        if (!trobat)
+                        {
+                            Log.e ("ERROR","ERROR NO TROBAT MAIL");
+                        }
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.e ("ERROR","ERROR DATABASE CANCEL");
+            }
+        })
+    }
+}

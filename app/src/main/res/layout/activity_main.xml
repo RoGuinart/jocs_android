@@ -1,166 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#34852F"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_green"
     tools:context=".MainActivity">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gvil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent=".25" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gvir"
-        android:layout_width="wrap_content"
+        android:gravity="center">
+        <Button
+            android:id="@+id/BTMLOGIN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/BTMLOGIN"/>
+        <!--botó de registrar-se -->
+        <Button
+        android:id="@+id/BTMREGISTRO"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".75" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gvoll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.125" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gvorr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.875" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/ghtt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/ghtb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".2" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gh1t"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.375" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gh1b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gh2t"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".55" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gh2b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".675" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gh3t"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".725" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/gh3b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".85" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/ghv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.96" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Jocs Guinart"
-        android:textAlignment="center"
-        android:textColor="#F7F9FA"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/ghtb"
-        app:layout_constraintEnd_toEndOf="@id/gvir"
-        app:layout_constraintStart_toStartOf="@id/gvil"
-        app:layout_constraintTop_toTopOf="@id/ghtt" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Version 0"
-        android:textAlignment="center"
-        android:textColor="#F7F9FA"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/gvorr"
-        app:layout_constraintStart_toStartOf="@id/gvoll"
-        app:layout_constraintTop_toTopOf="@id/ghv" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="#802F85"
-        android:text="PLAY"
-        app:layout_constraintBottom_toBottomOf="@id/gh1b"
-        app:layout_constraintEnd_toEndOf="@id/gvorr"
-        app:layout_constraintStart_toStartOf="@id/gvoll"
-        app:layout_constraintTop_toTopOf="@id/gh1t" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="#802F85"
-        android:text="OPTIONS"
-        app:layout_constraintBottom_toBottomOf="@id/gh3b"
-        app:layout_constraintEnd_toEndOf="@id/gvorr"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/gvoll"
-        app:layout_constraintTop_toTopOf="@id/gh3t"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="#802F85"
-        android:text="STATISTICS"
-        app:layout_constraintBottom_toBottomOf="@id/gh2b"
-        app:layout_constraintEnd_toEndOf="@id/gvorr"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/gvoll"
-        app:layout_constraintTop_toTopOf="@id/gh2t"
-        app:layout_constraintVertical_bias="0.0" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="@string/BTMREGISTER"
+        />
+    </LinearLayout>
+</RelativeLayout>

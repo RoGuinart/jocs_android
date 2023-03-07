@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_green"
+    tools:context=".Register">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+        <!-- ENTREM EL MAIL -->
+        <EditText
+            android:id="@+id/EMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/correoEt"
+            android:inputType="textEmailAddress" />
+        <!-- forcem que la entrada sigui un correu electronic -->
+        <!-- ENTREM EL PASSWORD -->
+        <EditText
+            android:id="@+id/PWD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/passEt"
+            android:inputType="textPassword" />
+        <!-- forcem que la entrada sigui un password -->
+        <!-- ENTREM EL NOM DEL JUGADOR -->
+        <EditText
+            android:id="@+id/USR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/nombreEt" />
+        <!-- DATA ACTUAL -->
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:hint="@string/fechaTxt"
+            android:textSize="20sp" />
+        <!-- BOTO DE ENTRAR -->
+        <Button
+            android:id="@+id/Register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/Registrar" />
+    </LinearLayout>
+</RelativeLayout>

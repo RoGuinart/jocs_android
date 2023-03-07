@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">Jocs_Guinart</string>
+    <string name="title_activity_login">Login</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="BTMLOGIN">Login</string>
+    <string name="BTMREGISTER">Register</string>
+    <string name="correoEt">E-mail</string>
+    <string name="nombreEt">Nom</string>
+    <string name="passEt">Password</string>
+    <string name="fechaTxt">Data</string>
+    <string name="Registrar">REGISTRAR</string>
+    <string name="correoLogin">E-mail</string>
+    <string name="passLogin">Password</string>
+    <string name="BtnLogin">Login</string>
+    <string name="tancarSessio">Tancar Sessió</string>
+    <string name="miPuntuaciotxt">Puntuació</string>
+    <string name="puntuacio"> -- </string>
+    <string name="uid"> -- </string>
+    <string name="correo"> -- </string>
+    <string name="nom"> -- </string>
+    <string name="MenuTxt">MENÚ</string>
+    <string name="jugarBtn">Jugar</string>
+    <string name="PuntuacionsBtn">Puntuacions</string>
+    <string name="CreditsBtn">Crèdits</string>
 </resources>
