@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Jocs_Guinart"
         tools:targetApi="31">
         <activity
+            android:name=".TresEnRatlla"
+            android:exported="false" />
+        <activity
+            android:name=".GameMenu"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
@@ -20,10 +26,6 @@
         <activity
             android:name=".Login"
             android:exported="false" />
-        <activity
-            android:name=".ui.login.Login"
-            android:exported="false"
-            android:label="@string/title_activity_login" />
         <activity
             android:name=".MainMenu"
             android:exported="false" />

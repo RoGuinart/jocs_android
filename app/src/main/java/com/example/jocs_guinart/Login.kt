@@ -55,11 +55,11 @@ class Login : AppCompatActivity()
         { task ->
             if (task.isSuccessful) {
                 val tx: String = "Benvingut " + email;
-                Toast.makeText(this, tx, Toast.LENGTH_LONG).show();
+
                 val user = auth.currentUser;
                 updateUI(user);
             } else {
-                Toast.makeText(this, "ERROR Autentificació", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Usuari o contrassenya incorrecta", Toast.LENGTH_LONG).show();
             }
         }
     }

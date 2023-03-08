@@ -8,7 +8,7 @@ import android.os.Handler
 import androidx.annotation.RawRes
 
 class Splash : AppCompatActivity() {
-    private val duracio: Long = 1500;
+    private val duracio: Long = 1000;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
@@ -21,6 +21,7 @@ class Splash : AppCompatActivity() {
         Handler().postDelayed({
             val intent = Intent(this, MainActivity::class.java);
             startActivity(intent);
+            finish();
         }, duracio);
     }
 }

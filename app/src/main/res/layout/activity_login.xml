@@ -54,6 +54,7 @@
         <!-- BOTO DE ENTRAR -->
         <Button
             android:id="@+id/LoginBtn"
+            android:background="@drawable/custom_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/BtnLogin"

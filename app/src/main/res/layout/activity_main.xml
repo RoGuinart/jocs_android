@@ -13,12 +13,15 @@
         android:gravity="center">
         <Button
             android:id="@+id/BTMLOGIN"
+            android:background="@drawable/custom_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/BTMLOGIN"/>
         <!--botó de registrar-se -->
         <Button
         android:id="@+id/BTMREGISTRO"
+        android:background="@drawable/custom_button"
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/BTMREGISTER"

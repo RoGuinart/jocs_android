@@ -15,9 +15,11 @@ class MainActivity : AppCompatActivity() {
         var BTMREGISTRO = findViewById<Button>(R.id.BTMREGISTRO);
         BTMLOGIN.setOnClickListener(){
             startActivity(Intent(this, Login::class.java));
+            finish();
         }
         BTMREGISTRO.setOnClickListener(){
             startActivity(Intent(this, Register::class.java));
+            finish();
         }
     }
 

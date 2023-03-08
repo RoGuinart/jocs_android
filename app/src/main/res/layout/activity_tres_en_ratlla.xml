@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_green"
+    tools:context=".TresEnRatlla">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0998632" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hMidTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.21" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hMidBot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hBot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="61dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vMidLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="154dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vMidRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="254dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="61dp" />
+
+    <ImageView
+        android:id="@+id/table"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/hBot"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:srcCompat="@drawable/ter_table"
+        android:scaleType="fitXY"/>
+
+    <ImageButton
+        android:id="@+id/pos00"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="48dp"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidLeft"
+        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:layout_constraintBottom_toBottomOf="@id/hMidTop"
+        app:srcCompat="@drawable/ter_x"
+        android:scaleType="fitXY"/>
+
+    <ImageButton
+        android:id="@+id/pos01"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/hMidTop"
+        app:layout_constraintEnd_toEndOf="@id/vMidRight"
+        app:layout_constraintStart_toStartOf="@id/vMidLeft"
+        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:srcCompat="@drawable/ter_o"
+        android:scaleType="fitXY"/>
+
+    <ImageButton
+        android:id="@+id/pos02"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/vMidRight"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:layout_constraintBottom_toBottomOf="@id/hMidTop"
+        app:srcCompat="@drawable/ter_x"
+        android:scaleType="fitXY"/>
+
+    <ImageButton
+        android:id="@+id/pos10"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/hMidBot"
+        app:layout_constraintEnd_toEndOf="@id/vMidLeft"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintTop_toTopOf="@id/hMidTop"
+        app:srcCompat="@drawable/ter_o"
+        android:scaleType="fitXY" />
+
+    <ImageButton
+        android:id="@+id/pos11"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/vMidLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidRight"
+        app:layout_constraintTop_toTopOf="@id/hMidTop"
+        app:layout_constraintBottom_toBottomOf="@id/hMidBot"
+        app:srcCompat="@drawable/ter_x"
+        android:scaleType="fitXY" />
+
+    <ImageButton
+        android:id="@+id/pos12"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/hMidBot"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintStart_toStartOf="@id/vMidRight"
+        app:layout_constraintTop_toTopOf="@id/hMidTop"
+        app:srcCompat="@drawable/ter_o"
+        android:scaleType="fitXY" />
+
+    <ImageButton
+        android:id="@+id/pos20"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="38dp"
+        tools:layout_editor_absoluteY="48dp"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidLeft"
+        app:layout_constraintTop_toTopOf="@id/hMidBot"
+        app:layout_constraintBottom_toBottomOf="@id/hBot"
+        app:srcCompat="@drawable/ter_x"
+        android:scaleType="fitXY"/>
+
+    <ImageButton
+        android:id="@+id/pos21"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/hBot"
+        app:layout_constraintEnd_toEndOf="@id/vMidRight"
+        app:layout_constraintStart_toStartOf="@id/vMidLeft"
+        app:layout_constraintTop_toTopOf="@id/hMidBot"
+        app:srcCompat="@drawable/ter_o"
+        android:scaleType="fitXY"/>
+
+    <ImageButton
+        android:id="@+id/pos22"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/vMidRight"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintTop_toTopOf="@id/hMidBot"
+        app:layout_constraintBottom_toBottomOf="@id/hBot"
+        app:srcCompat="@drawable/ter_x"
+        android:scaleType="fitXY"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
