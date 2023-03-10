@@ -12,56 +12,105 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.0998632" />
+        app:layout_constraintGuide_percent="0.13132694" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hMidTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.21" />
+        app:layout_constraintGuide_percent="0.2626539" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hMidBot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_percent="0.39398086" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/hBot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.46" />
+        app:layout_constraintGuide_percent="0.5253078" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="61dp" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vMidLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="154dp" />
+        app:layout_constraintGuide_percent="0.38333333" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vMidRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="254dp" />
+        app:layout_constraintGuide_percent="0.61666666" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="61dp" />
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/wTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/wBot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sMid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.77" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sBot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.81" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rBot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.94" />
 
     <ImageView
         android:id="@+id/table"
@@ -76,17 +125,15 @@
 
     <ImageButton
         android:id="@+id/pos00"
-        android:background="@null"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="48dp"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
-        app:layout_constraintEnd_toEndOf="@id/vMidLeft"
-        app:layout_constraintTop_toTopOf="@id/hTop"
+        android:background="@null"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@id/hMidTop"
-        app:srcCompat="@drawable/ter_x"
-        android:scaleType="fitXY"/>
+        app:layout_constraintEnd_toEndOf="@id/vMidLeft"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:srcCompat="@drawable/transparent" />
 
     <ImageButton
         android:id="@+id/pos01"
@@ -97,7 +144,7 @@
         app:layout_constraintEnd_toEndOf="@id/vMidRight"
         app:layout_constraintStart_toStartOf="@id/vMidLeft"
         app:layout_constraintTop_toTopOf="@id/hTop"
-        app:srcCompat="@drawable/ter_o"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
 
     <ImageButton
@@ -109,7 +156,7 @@
         app:layout_constraintEnd_toEndOf="@id/vRight"
         app:layout_constraintTop_toTopOf="@id/hTop"
         app:layout_constraintBottom_toBottomOf="@id/hMidTop"
-        app:srcCompat="@drawable/ter_x"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
 
     <ImageButton
@@ -121,7 +168,7 @@
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
         app:layout_constraintStart_toStartOf="@id/vLeft"
         app:layout_constraintTop_toTopOf="@id/hMidTop"
-        app:srcCompat="@drawable/ter_o"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY" />
 
     <ImageButton
@@ -133,7 +180,7 @@
         app:layout_constraintEnd_toEndOf="@id/vMidRight"
         app:layout_constraintTop_toTopOf="@id/hMidTop"
         app:layout_constraintBottom_toBottomOf="@id/hMidBot"
-        app:srcCompat="@drawable/ter_x"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY" />
 
     <ImageButton
@@ -145,7 +192,7 @@
         app:layout_constraintEnd_toEndOf="@id/vRight"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
         app:layout_constraintTop_toTopOf="@id/hMidTop"
-        app:srcCompat="@drawable/ter_o"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY" />
 
     <ImageButton
@@ -159,7 +206,7 @@
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
         app:layout_constraintTop_toTopOf="@id/hMidBot"
         app:layout_constraintBottom_toBottomOf="@id/hBot"
-        app:srcCompat="@drawable/ter_x"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
 
     <ImageButton
@@ -167,11 +214,11 @@
         android:background="@null"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/hBot"
-        app:layout_constraintEnd_toEndOf="@id/vMidRight"
         app:layout_constraintStart_toStartOf="@id/vMidLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidRight"
         app:layout_constraintTop_toTopOf="@id/hMidBot"
-        app:srcCompat="@drawable/ter_o"
+        app:layout_constraintBottom_toBottomOf="@id/hBot"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
 
     <ImageButton
@@ -183,7 +230,89 @@
         app:layout_constraintEnd_toEndOf="@id/vRight"
         app:layout_constraintTop_toTopOf="@id/hMidBot"
         app:layout_constraintBottom_toBottomOf="@id/hBot"
-        app:srcCompat="@drawable/ter_x"
+        app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/Winner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Winner!"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintTop_toTopOf="@id/wTop"
+        app:layout_constraintBottom_toBottomOf="@id/wBot" />
+
+    <TextView
+        android:id="@+id/totGamesTXT"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Total games!"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidLeft"
+        app:layout_constraintTop_toTopOf="@id/sTop"
+        app:layout_constraintBottom_toBottomOf="@id/sMid" />
+    <TextView
+        android:id="@+id/wonGamesTXT"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Won games"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/vMidLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidRight"
+        app:layout_constraintTop_toTopOf="@id/sTop"
+        app:layout_constraintBottom_toBottomOf="@id/sMid" />
+    <TextView
+        android:id="@+id/lostGamesTXT"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Lost games"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/vMidRight"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintTop_toTopOf="@id/sTop"
+        app:layout_constraintBottom_toBottomOf="@id/sMid" />
+    <TextView
+        android:id="@+id/totGames"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="1"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidLeft"
+        app:layout_constraintTop_toTopOf="@id/sMid"
+        app:layout_constraintBottom_toBottomOf="@id/sBot" />
+    <TextView
+        android:id="@+id/wonGames"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="2"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/vMidLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMidRight"
+        app:layout_constraintTop_toTopOf="@id/sMid"
+        app:layout_constraintBottom_toBottomOf="@id/sBot" />
+    <TextView
+        android:id="@+id/lostGames"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="10000"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/vMidRight"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintTop_toTopOf="@id/sMid"
+        app:layout_constraintBottom_toBottomOf="@id/sBot" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Button"
+        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintTop_toTopOf="@id/rTop"
+        app:layout_constraintBottom_toBottomOf="@id/rBot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

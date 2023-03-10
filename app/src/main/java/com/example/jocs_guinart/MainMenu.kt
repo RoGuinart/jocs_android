@@ -112,15 +112,9 @@ class MainMenu : AppCompatActivity() {
         var bdreference:DatabaseReference = database.getReference("DATA BASE JUGADORS");
         bdreference.addValueEventListener (object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                Log.i ("DEBUG","arrel value: "+ snapshot.value.toString());
-                Log.i ("DEBUG","arrel key: "+ snapshot.key.toString());
                 // ara capturem tots els fills
                 var trobat:Boolean =false
                 for (ds in snapshot.children) {
-                    Log.i ("DEBUG","DS key: "   +ds.child("Uid").key.toString());
-                    Log.i ("DEBUG","DS value: " +ds.child("Uid").value.toString());
-                    Log.i ("DEBUG","DS data: "  +ds.child("Data").value.toString());
-                    Log.i ("DEBUG","DS mail: "  +ds.child("Email").value.toString());
                     //mirem si el mail és el mateix que el del jugador
                     //si és així, mostrem les dades als textview  corresponents
                     if(ds.child("Email").value.toString() == user?.email)
@@ -142,6 +136,6 @@ class MainMenu : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
                 Log.e ("ERROR","ERROR DATABASE CANCEL");
             }
-        })
+        });
     }
 }

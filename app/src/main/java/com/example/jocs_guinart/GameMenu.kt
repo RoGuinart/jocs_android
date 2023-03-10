@@ -30,9 +30,10 @@ class GameMenu : AppCompatActivity() {
         }
         tresenratlla.setOnClickListener(){
 //hem d'enviar el id, el nom i el contador, i el nivell
-            val intent= Intent(this, TresEnRatlla::class.java)
-            startActivity(intent)
-            finish()
+            val intent= Intent(this, TresEnRatlla::class.java);
+            intent.putExtra("playerFirst",true);
+            startActivity(intent);
+            finish();
         }
         reversi.setOnClickListener(){
             Toast.makeText(this,"Reversi", Toast.LENGTH_SHORT).show();
