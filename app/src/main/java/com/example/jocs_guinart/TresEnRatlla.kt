@@ -1,24 +1,45 @@
 package com.example.jocs_guinart
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import org.w3c.dom.Text
 import java.util.Random
 
 class TresEnRatlla : AppCompatActivity() {
-    private var table: Array<IntArray> = Array(3) { IntArray(3) }; // Déu meu Senyor
+    private val table: Array<IntArray> = Array(3) { IntArray(3) }; // Déu meu Senyor
     private lateinit var bts : Array<ImageButton>;
+
+    private lateinit var uid : String;
+    private var games : Int = 0;
+    private var wins : Int = 0;
+    private var losses : Int = 0;
 
     private var playerTurn:Boolean = true;
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tres_en_ratlla);
 
+        val extras:Bundle? = intent.extras;
+
+        games  = extras?.get("TOT_GAMES") as Int;
+        Log.d("DEBUG", "$games -> $wins : $losses");
+        if(games == 0) //És la primera vegada que entrem aquí.
+            getDBData();
+        else
+        {
+            uid    = extras.get("UID") as String;
+            wins   = extras.get("WINS") as Int;
+            losses = extras.get("LOSSES") as Int;
+        }
 
         bts = arrayOf(
             findViewById<ImageButton>(R.id.pos00),
@@ -33,26 +54,25 @@ class TresEnRatlla : AppCompatActivity() {
         );
 
 
-        bts[0].setOnClickListener() { pressPos(1, 0,0); }
-        bts[1].setOnClickListener() { pressPos(1, 0,1); }
-        bts[2].setOnClickListener() { pressPos(1, 0,2); }
-        bts[3].setOnClickListener() { pressPos(1, 1,0); }
-        bts[4].setOnClickListener() { pressPos(1, 1,1); }
-        bts[5].setOnClickListener() { pressPos(1, 1,2); }
-        bts[6].setOnClickListener() { pressPos(1, 2,0); }
-        bts[7].setOnClickListener() { pressPos(1, 2,1); }
-        bts[8].setOnClickListener() { pressPos(1, 2,2); }
+        bts[0].setOnClickListener() { pressPos(1, 0,0); };
+        bts[1].setOnClickListener() { pressPos(1, 0,1); };
+        bts[2].setOnClickListener() { pressPos(1, 0,2); };
+        bts[3].setOnClickListener() { pressPos(1, 1,0); };
+        bts[4].setOnClickListener() { pressPos(1, 1,1); };
+        bts[5].setOnClickListener() { pressPos(1, 1,2); };
+        bts[6].setOnClickListener() { pressPos(1, 2,0); };
+        bts[7].setOnClickListener() { pressPos(1, 2,1); };
+        bts[8].setOnClickListener() { pressPos(1, 2,2); };
 
 
-        val intent:Bundle? = intent.extras;
-        playerTurn = intent?.get("playerFirst") as Boolean;
+        playerTurn = extras.get("playerFirst") as Boolean;
 
         if(!playerTurn) changeTurn();
     }
 
     private fun changeTurn()
     {
-        var end = checkEnd();
+        val end = checkEnd();
         if(end != 0)
         {
             endGame(end);
@@ -66,11 +86,7 @@ class TresEnRatlla : AppCompatActivity() {
         }
 
         if (!playerTurn) // Torn de la màquina
-        {
             machineLogic();
-        } else {
-            //TimeUnit.MILLISECONDS.sleep(250L);
-        }
     }
 
     /**
@@ -94,12 +110,26 @@ class TresEnRatlla : AppCompatActivity() {
             return;
         }
 
-        //Si no hi ha cap posició lliure, agafa un lloc aleatori.
-        do {
-            i= Random().nextInt(9);
-        } while (table[i/3][i%3] != 0);
+        //Si no hi ha cap moviment bo, agafa un lloc aleatori.
+        val freeSpaces : IntArray = IntArray(9);
+        var j : Int = 0; //Total d'espais lliures
+        i = 0;
+        for (positions in table)
+        {
+            for (pos in positions)
+            {
+                if(pos == 0)
+                    freeSpaces[j++] = i;
+                i++
+            }
+        }
 
-        pressPos(2, i/3, i%3);
+        if(j == 0)
+            endGame(-1); // no es dóna mai el cas, jo què sé
+
+        i= Random().nextInt(j); // Sempre serà un espai lliure aleatori
+
+        pressPos(2, freeSpaces[i]/3, freeSpaces[i]%3);
     }
 
     /**
@@ -144,12 +174,12 @@ class TresEnRatlla : AppCompatActivity() {
      *  Dibuixa a una posició
      *  @param player Jugador.  1 per usuari, 2 per màquina
      */
-    fun pressPos(player:Int, posX:Int, posY:Int)
+    private fun pressPos(player:Int, posX:Int, posY:Int)
     {
         val posBtn:ImageButton = bts[3*posX +posY];
         if(table[posX][posY] != 0) // No s'hauria de donar el cas
         {
-            Log.e("ERR", "Invalid position [$posX][$posY]: value is ${table[posX][posY]}");
+            Log.e("EINVAL", "Invalid position [$posX][$posY]: value is ${table[posX][posY]}!");
             return;
         }
         table[posX][posY] = player;
@@ -211,34 +241,76 @@ class TresEnRatlla : AppCompatActivity() {
         for (button in bts)
             button.isEnabled = false;
 
-        //TODO: add win/loss to DB
+        updateDB(uid, winner);
 
-        var auth = FirebaseAuth.getInstance();
-        var user:FirebaseUser? = auth.currentUser;
+        val totGames : TextView = findViewById<TextView>(R.id.totGames);
+        val wonGames : TextView = findViewById<TextView>(R.id.wonGames);
+        val lstGames : TextView = findViewById<TextView>(R.id.lostGames);
+        val winnerT  : TextView = findViewById<TextView>(R.id.Winner);
+        val replayB  : Button   = findViewById(R.id.replayB);
+        val returnB  : Button   = findViewById(R.id.backB);
 
-        var uid:String= user!!.uid;
-        var dbPlays:Int=1;
-        var dbWins:Int=0;
-        var dbLoss:Int=0;
-        var found:Boolean = false;
+        totGames.text = games.toString();
+        wonGames.text = wins.toString();
+        lstGames.text = losses.toString();
 
+        when (winner) { // ???
+            1    -> winnerT.text = "Has guanyat!"
+            2    -> winnerT.text = "Has perdut!"
+            else -> winnerT.text = "Empat!"
+        };
 
+        //Ensenya tots els botons i text
+        totGames.visibility = TextView.VISIBLE;
+        wonGames.visibility = TextView.VISIBLE;
+        lstGames.visibility = TextView.VISIBLE;
+        winnerT.visibility  = TextView.VISIBLE;
+
+        replayB.visibility  = TextView.VISIBLE;
+        returnB.visibility  = TextView.VISIBLE;
+
+        findViewById<TextView>(R.id.totGamesTXT).visibility  = TextView.VISIBLE;
+        findViewById<TextView>(R.id.wonGamesTXT).visibility  = TextView.VISIBLE;
+        findViewById<TextView>(R.id.lostGamesTXT).visibility = TextView.VISIBLE;
+
+        replayB.setOnClickListener {
+            val extras:Bundle? = intent.extras;
+            val whoStarts : Boolean = extras?.get("playerFirst") as Boolean;
+
+            val intent= Intent(this, TresEnRatlla::class.java);
+            intent.putExtra("playerFirst", whoStarts); // El mateix que abans. Caldria canviar-ho.
+            intent.putExtra("UID", uid);
+            intent.putExtra("TOT_GAMES", games);    //Mai serà 0: evitem que torni a crear una connexió a la BBDD al començar
+            intent.putExtra("WINS", wins);
+            intent.putExtra("LOSSES", losses);
+
+            startActivity(intent);
+            finish();
+        }
+
+        returnB.setOnClickListener { finish(); } // Torna al menú principal
+
+    }
+
+    private fun getDBData()
+    {
         val database: FirebaseDatabase = FirebaseDatabase.getInstance("https://projecte-m8-default-rtdb.europe-west1.firebasedatabase.app/");
         val dbreference: DatabaseReference = database.getReference("TRES EN RATLLA");
         dbreference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
+                var auth : FirebaseAuth = FirebaseAuth.getInstance();
+                var user:FirebaseUser? = auth.currentUser;
+
+                uid = user!!.uid;
+
                 for (ds in snapshot.children) {
-                    if (ds.key.toString() == uid) {
+                    if (ds.key.toString() == user.uid) {
 
-                        dbPlays += ds.child("TotalPlays").value.toString().toInt();
-                        dbWins = ds.child("Wins").value.toString().toInt();
-                        dbLoss = ds.child("Losses").value.toString().toInt();
-                        Log.i("STATS1", "$dbPlays");
-                        Log.i("STATS1", "$dbWins");
-                        Log.i("STATS1", "$dbLoss");
+                        games = ds.child("TotalPlays").value.toString().toInt();
+                        wins = ds.child("Wins").value.toString().toInt();
+                        losses = ds.child("Losses").value.toString().toInt();
 
-                        found=true;
                         break;
                     }
                 }
@@ -248,24 +320,23 @@ class TresEnRatlla : AppCompatActivity() {
                 Log.e("ERROR", "ERROR DATABASE CANCEL");
             }
         });
-
-        if     (winner == 1) dbWins++;
-        else if(winner == 2) dbLoss++;
-        Log.i("STATS2", "$dbPlays");
-        Log.i("STATS2", "$dbWins");
-        Log.i("STATS2", "$dbLoss");
-        updateDB(dbreference, uid, dbPlays, dbWins, dbLoss);
-
     }
-
-    fun updateDB(db:DatabaseReference, uid:String, plays:Int, wins:Int, losses:Int)
+    fun updateDB(uid:String, winner: Int)
     {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance("https://projecte-m8-default-rtdb.europe-west1.firebasedatabase.app/");
+        val dbreference: DatabaseReference = database.getReference("TRES EN RATLLA");
+
+        games++;
+        if     (winner == 1) wins++;
+        else if(winner == 2) losses++;
+
         val playerData : HashMap<String,Any> = HashMap<String, Any>();
-        playerData["TotalPlays"] = plays;
+        playerData["TotalPlays"] = games;
         playerData["Wins"] = wins;
         playerData["Losses"] = losses;
-        db.child(uid).setValue(playerData);
-        Log.i("DB", "Successfully updated user statistics");
+
+        dbreference.child(uid).setValue(playerData);
+
     }
 
 

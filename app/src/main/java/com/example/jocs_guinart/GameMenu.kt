@@ -26,12 +26,11 @@ class GameMenu : AppCompatActivity() {
         var reversi: ImageButton = findViewById(R.id.reversi)
 
         penjat.setOnClickListener(){
-            Toast.makeText(this,"Penjat", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"penjat", Toast.LENGTH_SHORT).show();
         }
         tresenratlla.setOnClickListener(){
 //hem d'enviar el id, el nom i el contador, i el nivell
-            val intent= Intent(this, TresEnRatlla::class.java);
-            intent.putExtra("playerFirst",true);
+            val intent= Intent(this, TresEnRatllaMenu::class.java);
             startActivity(intent);
             finish();
         }
