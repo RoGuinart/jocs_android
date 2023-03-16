@@ -177,6 +177,8 @@ class TresEnRatlla : AppCompatActivity() {
     private fun pressPos(player:Int, posX:Int, posY:Int)
     {
         val posBtn:ImageButton = bts[3*posX +posY];
+        posBtn.isEnabled = false;
+
         if(table[posX][posY] != 0) // No s'hauria de donar el cas
         {
             Log.e("EINVAL", "Invalid position [$posX][$posY]: value is ${table[posX][posY]}!");
@@ -186,7 +188,6 @@ class TresEnRatlla : AppCompatActivity() {
         playerTurn = !playerTurn;
 
         posBtn.setImageResource(if(player == 1) R.drawable.ter_x  else R.drawable.ter_o);
-        posBtn.isEnabled = false;
 
         changeTurn();
     }

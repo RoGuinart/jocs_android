@@ -8,7 +8,7 @@
     tools:context=".TresEnRatlla">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hTop"
+        android:id="@+id/v0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -36,7 +36,7 @@
         app:layout_constraintGuide_percent="0.5253078" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vLeft"
+        android:id="@+id/h0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -57,14 +57,14 @@
         app:layout_constraintGuide_percent="0.61666666" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vRight"
+        android:id="@+id/h8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/wTop"
+        android:id="@+id/v8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -131,9 +131,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/hBot"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
-        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:layout_constraintEnd_toEndOf="@id/h8"
+        app:layout_constraintStart_toStartOf="@id/h0"
+        app:layout_constraintTop_toTopOf="@id/v0"
         app:srcCompat="@drawable/ter_table"
         android:scaleType="fitXY"/>
 
@@ -145,8 +145,8 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@id/hMidTop"
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
-        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:layout_constraintStart_toStartOf="@id/h0"
+        app:layout_constraintTop_toTopOf="@id/v0"
         app:srcCompat="@drawable/transparent" />
 
     <ImageButton
@@ -157,7 +157,7 @@
         app:layout_constraintBottom_toBottomOf="@id/hMidTop"
         app:layout_constraintEnd_toEndOf="@id/vMidRight"
         app:layout_constraintStart_toStartOf="@id/vMidLeft"
-        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:layout_constraintTop_toTopOf="@id/v0"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
 
@@ -167,8 +167,8 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
-        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:layout_constraintEnd_toEndOf="@id/h8"
+        app:layout_constraintTop_toTopOf="@id/v0"
         app:layout_constraintBottom_toBottomOf="@id/hMidTop"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
@@ -180,7 +180,7 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/hMidBot"
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintStart_toStartOf="@id/h0"
         app:layout_constraintTop_toTopOf="@id/hMidTop"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY" />
@@ -203,7 +203,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@id/hMidBot"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintEnd_toEndOf="@id/h8"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
         app:layout_constraintTop_toTopOf="@id/hMidTop"
         app:srcCompat="@drawable/transparent"
@@ -216,7 +216,7 @@
         android:layout_height="0dp"
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="48dp"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintStart_toStartOf="@id/h0"
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
         app:layout_constraintTop_toTopOf="@id/hMidBot"
         app:layout_constraintBottom_toBottomOf="@id/hBot"
@@ -241,7 +241,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintEnd_toEndOf="@id/h8"
         app:layout_constraintTop_toTopOf="@id/hMidBot"
         app:layout_constraintBottom_toBottomOf="@id/hBot"
         app:srcCompat="@drawable/transparent"
@@ -256,9 +256,9 @@
         android:textSize="24sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/wBot"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
-        app:layout_constraintTop_toTopOf="@id/wTop" />
+        app:layout_constraintEnd_toEndOf="@id/h8"
+        app:layout_constraintStart_toStartOf="@id/h0"
+        app:layout_constraintTop_toTopOf="@id/v8" />
 
     <TextView
         android:id="@+id/totGamesTXT"
@@ -266,7 +266,7 @@
         android:layout_height="0dp"
         android:text="Total games!"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintStart_toStartOf="@id/h0"
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
         app:layout_constraintTop_toTopOf="@id/sRandTop"
         app:layout_constraintBottom_toBottomOf="@id/sMid"
@@ -289,7 +289,7 @@
         android:text="Lost games"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintEnd_toEndOf="@id/h8"
         app:layout_constraintTop_toTopOf="@id/sRandTop"
         app:layout_constraintBottom_toBottomOf="@id/sMid"
         android:visibility="invisible" />
@@ -299,7 +299,7 @@
         android:layout_height="0dp"
         android:text="1"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintStart_toStartOf="@id/h0"
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
         app:layout_constraintTop_toTopOf="@id/sMid"
         app:layout_constraintBottom_toBottomOf="@id/sBot"
@@ -322,7 +322,7 @@
         android:text="10000"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
+        app:layout_constraintEnd_toEndOf="@id/h8"
         app:layout_constraintTop_toTopOf="@id/sMid"
         app:layout_constraintBottom_toBottomOf="@id/sBot"
         android:visibility="invisible" />
@@ -333,8 +333,8 @@
         android:layout_height="0dp"
         android:text="Replay"
         app:layout_constraintBottom_toBottomOf="@id/replayBot"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/h8"
+        app:layout_constraintStart_toStartOf="@id/h0"
         app:layout_constraintTop_toTopOf="@id/replayTop"
         android:visibility="invisible" />
 
@@ -344,8 +344,8 @@
         android:layout_height="0dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="@id/backBot"
-        app:layout_constraintEnd_toEndOf="@id/vRight"
-        app:layout_constraintStart_toStartOf="@id/vLeft"
+        app:layout_constraintEnd_toEndOf="@id/h8"
+        app:layout_constraintStart_toStartOf="@id/h0"
         app:layout_constraintTop_toTopOf="@id/backTop"
         android:visibility="invisible" />
 
