@@ -35,7 +35,9 @@ class GameMenu : AppCompatActivity() {
             finish();
         }
         reversi.setOnClickListener(){
-            Toast.makeText(this,"Reversi", Toast.LENGTH_SHORT).show();
+            val intent= Intent(this, Othello::class.java);
+            startActivity(intent);
+            finish();
         }
     }
 }
