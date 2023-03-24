@@ -5,8 +5,12 @@
     <color name="purple_700">   #FF3700B3   </color>
     <color name="teal_200">     #FF03DAC5   </color>
     <color name="teal_700">     #FF018786   </color>
-    <color name="black">        #FF000000   </color>
-    <color name="white">        #FFFFFFFF   </color>
+    <color name="black">        #F000       </color>
+    <color name="white">        #FFFF       </color>
+    <color name="dark_gray">    #F777       </color>
+    <color name="light_gray">   #FAAA       </color>
+    <color name="t_light">      #efd5b0     </color>
+    <color name="t_dark">       #6d3e2e     </color>
     <color name="bg_green">     #34852F     </color>
     <color name="button">       #802F85     </color>
     <color name="txt_light">    #F7F9FA     </color>

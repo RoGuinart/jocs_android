@@ -35,7 +35,7 @@ class GameMenu : AppCompatActivity() {
             finish();
         }
         reversi.setOnClickListener(){
-            val intent= Intent(this, Othello::class.java);
+            val intent= Intent(this, OthelloMenu::class.java);
             startActivity(intent);
             finish();
         }

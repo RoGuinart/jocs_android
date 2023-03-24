@@ -255,7 +255,7 @@ class TresEnRatlla : AppCompatActivity() {
         wonGames.text = wins.toString();
         lstGames.text = losses.toString();
 
-        when (winner) { // ???
+        when (winner) {
             1    -> winnerT.text = "Has guanyat!"
             2    -> winnerT.text = "Has perdut!"
             else -> winnerT.text = "Empat!"
@@ -300,15 +300,15 @@ class TresEnRatlla : AppCompatActivity() {
         dbreference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
-                var auth : FirebaseAuth = FirebaseAuth.getInstance();
-                var user:FirebaseUser? = auth.currentUser;
+                val auth : FirebaseAuth = FirebaseAuth.getInstance();
+                val user:FirebaseUser? = auth.currentUser;
 
                 uid = user!!.uid;
 
                 for (ds in snapshot.children) {
                     if (ds.key.toString() == user.uid) {
 
-                        games = ds.child("TotalPlays").value.toString().toInt();
+                        games = ds.child("TotalGames").value.toString().toInt();
                         wins = ds.child("Wins").value.toString().toInt();
                         losses = ds.child("Losses").value.toString().toInt();
 
@@ -332,7 +332,7 @@ class TresEnRatlla : AppCompatActivity() {
         else if(winner == 2) losses++;
 
         val playerData : HashMap<String,Any> = HashMap<String, Any>();
-        playerData["TotalPlays"] = games;
+        playerData["TotalGames"] = games;
         playerData["Wins"] = wins;
         playerData["Losses"] = losses;
 

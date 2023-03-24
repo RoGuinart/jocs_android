@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_green"
     tools:context=".Othello">
 
   <androidx.constraintlayout.widget.Guideline
@@ -312,7 +313,7 @@
       app:layout_constraintEnd_toEndOf="@id/h8"
       app:layout_constraintStart_toStartOf="@id/h0"
       app:layout_constraintTop_toTopOf="@id/v0"
-      app:srcCompat="@drawable/reversi" />
+      app:srcCompat="@drawable/transparent" />
 
 
   <!--  BUTTONS  -->
@@ -329,6 +330,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b01"
@@ -342,6 +344,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b02"
@@ -355,6 +358,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b03"
@@ -368,6 +372,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
     android:id="@+id/b04"
@@ -381,6 +386,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b05"
@@ -394,6 +400,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b06"
@@ -407,6 +414,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b07"
@@ -420,6 +428,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v1"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
 
 
@@ -435,6 +444,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b11"
@@ -448,6 +458,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b12"
@@ -461,6 +472,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b13"
@@ -474,7 +486,8 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
-      android:scaleType="fitXY"/>
+      android:background="@color/t_light"
+  android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b14"
       android:tag="14"
@@ -487,6 +500,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b15"
@@ -500,6 +514,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b16"
@@ -513,6 +528,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b17"
@@ -526,6 +542,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v2"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
 
 
@@ -541,6 +558,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b21"
@@ -554,6 +572,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b22"
@@ -567,6 +586,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b23"
@@ -580,6 +600,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b24"
@@ -593,6 +614,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b25"
@@ -606,6 +628,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b26"
@@ -619,6 +642,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b27"
@@ -632,6 +656,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v3"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
 
 
@@ -647,6 +672,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b31"
@@ -660,6 +686,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b32"
@@ -673,6 +700,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b33"
@@ -686,6 +714,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b34"
@@ -699,6 +728,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b35"
@@ -712,6 +742,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b36"
@@ -725,6 +756,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b37"
@@ -738,6 +770,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v4"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
 
   <ImageButton
@@ -752,6 +785,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b41"
@@ -765,6 +799,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b42"
@@ -778,6 +813,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b43"
@@ -791,6 +827,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b44"
@@ -804,6 +841,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b45"
@@ -817,6 +855,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b46"
@@ -830,6 +869,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b47"
@@ -843,6 +883,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v5"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
 
 
@@ -858,6 +899,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b51"
@@ -871,6 +913,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b52"
@@ -884,6 +927,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b53"
@@ -897,6 +941,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b54"
@@ -910,6 +955,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b55"
@@ -923,6 +969,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b56"
@@ -936,6 +983,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b57"
@@ -949,6 +997,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v6"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
 
 
@@ -964,6 +1013,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b61"
@@ -977,6 +1027,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b62"
@@ -990,6 +1041,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b63"
@@ -1003,6 +1055,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b64"
@@ -1016,6 +1069,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b65"
@@ -1029,6 +1083,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b66"
@@ -1042,6 +1097,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b67"
@@ -1055,6 +1111,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v7"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
 
 
@@ -1070,6 +1127,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b71"
@@ -1083,6 +1141,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b72"
@@ -1096,6 +1155,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b73"
@@ -1109,6 +1169,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b74"
@@ -1122,6 +1183,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b75"
@@ -1135,6 +1197,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b76"
@@ -1148,6 +1211,7 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_dark"
       android:scaleType="fitXY"/>
   <ImageButton
       android:id="@+id/b77"
@@ -1161,7 +1225,9 @@
       app:layout_constraintBottom_toBottomOf="@id/v8"
       tools:layout_editor_absoluteX="40dp"
       tools:layout_editor_absoluteY="46dp"
+      android:background="@color/t_light"
       android:scaleType="fitXY"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
