@@ -9,7 +9,7 @@
     <color name="white">        #FFFF       </color>
     <color name="dark_gray">    #F777       </color>
     <color name="light_gray">   #FAAA       </color>
-    <color name="t_light">      #efd5b0     </color>
+    <color name="t_light">      #D6B78B     </color>
     <color name="t_dark">       #6d3e2e     </color>
     <color name="bg_green">     #34852F     </color>
     <color name="button">       #802F85     </color>

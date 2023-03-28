@@ -15,7 +15,10 @@
     <string name="nombreEt">Nom</string>
     <string name="passEt">Password</string>
     <string name="fechaTxt">Data</string>
+    <string name="edatEt">Edat</string>
+    <string name="poblacioEt">Població</string>
     <string name="Registrar">REGISTRAR</string>
+    <string name="userLogin">Username</string>
     <string name="correoLogin">E-mail</string>
     <string name="passLogin">Password</string>
     <string name="BtnLogin">Login</string>
@@ -29,4 +32,7 @@
     <string name="jugarBtn">Jugar</string>
     <string name="PuntuacionsBtn">Puntuacions</string>
     <string name="CreditsBtn">Crèdits</string>
+    <string name="edat"> -- </string>
+    <string name="poblacio"> -- </string>
+    <string name="editarBtn">Canviar Imatge</string>
 </resources>

@@ -34,8 +34,8 @@
         <!-- uid -->
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/alienimagen"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:src="@drawable/menu" />
 
         <TextView
@@ -51,6 +51,22 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/correo" />
+        <!-- edat -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edat"
+            android:textSize="15sp"
+            android:text="@string/edat"
+            android:gravity="center"/>
+        <!-- Població -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/poblacio"
+            android:textSize="15sp"
+            android:text="@string/poblacio"
+            android:gravity="center"/>
         <!-- nom -->
         <TextView
             android:id="@+id/nom"
@@ -82,6 +98,15 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/custom_button"
             android:text="@string/CreditsBtn" />
+        <!-- Boto d’Editar -->
+        <Button
+            android:id="@+id/editarBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/custom_button"
+            android:text="@string/editarBtn" />
+        />
         <!-- BOTO DE Tancar sessió -->
         <Button
             android:id="@+id/tancarSessio"

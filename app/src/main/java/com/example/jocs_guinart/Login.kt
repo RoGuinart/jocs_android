@@ -32,8 +32,8 @@ class Login : AppCompatActivity()
         BtnLogin.setOnClickListener()
         {
             //Abans de fer el registre validem les dades
-            var email: String = correoLogin.text.toString();
-            var passw: String = passLogin.text.toString();
+            val email: String = correoLogin.text.toString();
+            val passw: String = passLogin.text.toString();
             // validació del correu
             // si no es de tipus correu
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
@@ -55,8 +55,9 @@ class Login : AppCompatActivity()
         { task ->
             if (task.isSuccessful) {
                 val tx: String = "Benvingut " + email;
-
                 val user = auth.currentUser;
+
+                SaveSharedPreference.setUserName(this, email);
                 updateUI(user);
             } else {
                 Toast.makeText(this, "Usuari o contrassenya incorrecta", Toast.LENGTH_LONG).show();

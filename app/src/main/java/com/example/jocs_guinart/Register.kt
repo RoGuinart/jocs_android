@@ -19,11 +19,13 @@ import com.google.firebase.database.FirebaseDatabase
 class Register : AppCompatActivity() {
     //Definim les variables que farem servir
     //lateinit ens permet no inicialitzar-les encara
-    lateinit var correoEt  : EditText;
-    lateinit var passEt    : EditText;
-    lateinit var nombreEt  : EditText;
-    lateinit var fechaTxt  : TextView;
-    lateinit var Registrar : Button;
+    lateinit var correoEt   : EditText;
+    lateinit var passEt     : EditText;
+    lateinit var nombreEt   : EditText;
+    lateinit var fechaTxt   : TextView;
+    lateinit var edatEt     : EditText
+    lateinit var poblacioEt : EditText
+    lateinit var Registrar  : Button;
     lateinit var auth: FirebaseAuth //FIREBASE AUTENTIFICACIO
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,11 +35,13 @@ class Register : AppCompatActivity() {
     }
 
     private fun activity_setup() {
-        correoEt  = findViewById<EditText>(R.id.EMail);
-        passEt    = findViewById<EditText>(R.id.PWD);
-        nombreEt  = findViewById<EditText>(R.id.USR);
-        fechaTxt  = findViewById<TextView>(R.id.date);
-        Registrar = findViewById<Button>  (R.id.Register);
+        correoEt    = findViewById<EditText>(R.id.EMail);
+        passEt      = findViewById<EditText>(R.id.PWD);
+        nombreEt    = findViewById<EditText>(R.id.USR);
+        fechaTxt    = findViewById<TextView>(R.id.date);
+        edatEt      = findViewById<EditText>(R.id.edatEt);
+        poblacioEt  = findViewById<EditText>(R.id.poblacioEt);
+        Registrar   = findViewById<Button>  (R.id.Register);
 
         //Carreguem la data al TextView
         //Utilitzem calendar (hi ha moltes altres opcions)
@@ -52,8 +56,8 @@ class Register : AppCompatActivity() {
         Registrar.setOnClickListener()
         {
             //Abans de fer el registre validem les dades;
-            var email: String = correoEt.text.toString();
-            var pass:  String = passEt.text.toString();
+            val email: String = correoEt.text.toString();
+            val pass:  String = passEt.text.toString();
             // validació del correu
             // si no es de tipus correu
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -88,17 +92,19 @@ class Register : AppCompatActivity() {
 
     private fun saveToDB(user: FirebaseUser)
     {
-        var dadesJugador : HashMap<String,Any> = HashMap<String, Any>();
-        dadesJugador.put ("Uid",        user.uid);
-        dadesJugador.put ("Email",      correoEt.text.toString());
-        dadesJugador.put ("Password",   passEt.text.toString()); //TODO: encriptar
-        dadesJugador.put ("Nom",        nombreEt.text.toString());
-        dadesJugador.put ("Data",       fechaTxt.text.toString());
-        dadesJugador.put ("Puntuacio",  0);
+        val dadesJugador : HashMap<String,Any> = HashMap<String, Any>();
+        dadesJugador["Uid"] = user.uid;
+        dadesJugador["Email"] = correoEt.text.toString();
+        dadesJugador["Password"] = passEt.text.toString(); //TODO: encriptar
+        dadesJugador["Nom"] = nombreEt.text.toString();
+        dadesJugador["Data"] = fechaTxt.text.toString();
+        dadesJugador["Poblacio"] = poblacioEt.text.toString();
+        dadesJugador["Edat"] = edatEt.text.toString();
+        dadesJugador["Puntuacio"] = 0;
 
         // Creem un punter a la base de dades i li donem un nom
-        var database:  FirebaseDatabase  = FirebaseDatabase.getInstance("https://projecte-m8-default-rtdb.europe-west1.firebasedatabase.app/");
-        var reference: DatabaseReference = database.getReference("DATA BASE JUGADORS");
+        val database:  FirebaseDatabase  = FirebaseDatabase.getInstance("https://projecte-m8-default-rtdb.europe-west1.firebasedatabase.app/");
+        val reference: DatabaseReference = database.getReference("DATA BASE JUGADORS");
 
         if(reference!=null)
         {
@@ -106,6 +112,7 @@ class Register : AppCompatActivity() {
             reference.child(user.uid).setValue(dadesJugador);
             Toast.makeText(this, "Registrat amb èxit", Toast.LENGTH_SHORT).show();
             val mainMenu = Intent(this, MainMenu::class.java);
+            SaveSharedPreference.setUserName(this, correoEt.text.toString());
             startActivity(mainMenu);
         }
         else

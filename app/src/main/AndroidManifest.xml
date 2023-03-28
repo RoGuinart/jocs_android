@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.jocs_guinart">
+
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -11,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jocs_Guinart"
         tools:targetApi="31">
+        <activity
+            android:name=".Ranking"
+            android:exported="false" />
         <activity
             android:name=".OthelloMenu"
             android:exported="false" />
