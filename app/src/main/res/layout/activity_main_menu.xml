@@ -36,7 +36,7 @@
             android:id="@+id/alienimagen"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/menu" />
+            android:src="@drawable/transparent" />
 
         <TextView
             android:id="@+id/uid"
@@ -53,9 +53,9 @@
             android:text="@string/correo" />
         <!-- edat -->
         <TextView
+            android:id="@+id/edat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/edat"
             android:textSize="15sp"
             android:text="@string/edat"
             android:gravity="center"/>

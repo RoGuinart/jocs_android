@@ -1,32 +1,35 @@
 package com.example.jocs_guinart
 
 import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Typeface
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.squareup.picasso.Picasso
 import java.io.ByteArrayOutputStream
-import java.security.AccessController.getContext
+
 
 class MainMenu : AppCompatActivity() {
 
@@ -157,17 +160,24 @@ class MainMenu : AppCompatActivity() {
                         poblacio.text = ds.child("Poblacio").value.toString()
                         edat.text = ds.child("Edat").value.toString()
 
-                        val imatge: String = ds.child("Imatge").value.toString();
-                        try {
-                            Picasso.get().load(imatge).into(imatgePerfil)
-                        } catch (e: Exception) {
-                            Picasso.get().load(R.drawable.def_player).into(imatgePerfil)
-                        }
 
+                        // Imatge perfil
+
+                        val folderReference: StorageReference = storageReference.child("FotosPerfil");
+                        val MB: Long = 1024*1024;
+
+                        folderReference.child(uid.text.toString()).getBytes(MB)
+                            .addOnSuccessListener(OnSuccessListener<ByteArray> { bytes ->
+                                val bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+                                imatgePerfil.setImageBitmap(bmp);
+                            }).addOnFailureListener(OnFailureListener {
+                                imatgePerfil.setImageResource(R.drawable.def_player);
+                            });
+
+                        return;
                     }
-                    if (!trobat) {
-                        Log.e("ERROR", "ERROR NO TROBAT MAIL");
-                    }
+
+                    Log.e("ERROR", "ERROR NO TROBAT MAIL");
                 }
             }
 
@@ -175,15 +185,21 @@ class MainMenu : AppCompatActivity() {
                 Log.e("ERROR", "ERROR DATABASE CANCEL");
             }
         });
+
+        //Imatge perfil
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val REQUEST_CODE = 201
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-            imatgeUri = data?.data!!;
+            if(data?.data != null)
+                imatgeUri = data.data!!;
+
             imatgePerfil.setImageURI(imatgeUri);
-            pujarFoto(imatgeUri)
+            pujarFoto(imatgeUri);
+
         } else {
             Toast.makeText(this, "Error recuperant imatge de galeria", Toast.LENGTH_SHORT).show()
         }
@@ -205,7 +221,7 @@ class MainMenu : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
                 //mirem primer si tenim permisos per a accedir a Read External Storage
-                if (askForPermissions()) {
+                if (askForPermissions(android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     val intent = Intent(Intent.ACTION_PICK)
                     val REQUEST_CODE = 201 //Aquest codi és un número que farem servir per
                     // a identificar el que hem recuperat del intent
@@ -220,10 +236,31 @@ class MainMenu : AppCompatActivity() {
                 }
             }
             .setPositiveButton("Càmera") { view, _ ->
-                Toast.makeText(
-                    this, "A IMPLEMENTAR PELS ALUMNES",
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText( this, "A IMPLEMENTAR PELS ALUMNES", Toast.LENGTH_LONG).show()
+                if (askForPermissions(android.Manifest.permission.CAMERA)) {
+                    //val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    val REQUEST_CODE = 201 //Aquest codi és un número que farem servir per
+                    // a identificar el que hem recuperat del intent
+                    // pot ser qualsevol número
+                    //intent.type = "image/*";
+
+                    val values = ContentValues()
+                    values.put(MediaStore.Images.Media.TITLE, "photo")
+                    values.put(MediaStore.Images.Media.DESCRIPTION, "Image capture by camera")
+                    imatgeUri = contentResolver.insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        values
+                    )!!
+                    val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                    intent.putExtra(MediaStore.EXTRA_OUTPUT, imatgeUri)
+                    startActivityForResult(intent, REQUEST_CODE)
+
+                } else {
+                    Toast.makeText(
+                        this, "ERROR PERMISOS",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
                 view.dismiss()
             }
             .setCancelable(false)
@@ -264,32 +301,25 @@ class MainMenu : AppCompatActivity() {
     }
 
 
-    fun askForPermissions(): Boolean {
+    fun askForPermissions(perm : String): Boolean {
         val REQUEST_CODE = 201
         if (!isPermissionsAllowed()) {
-            if
-                    (ActivityCompat.shouldShowRequestPermissionRationale(
-                    this,
-                    android.Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-            ) {
+            if(ActivityCompat.shouldShowRequestPermissionRationale(this,perm))
                 showPermissionDeniedDialog();
-            } else {
-                ActivityCompat.requestPermissions(
-                    this, arrayOf(
-                        android.Manifest.permission.READ_EXTERNAL_STORAGE
-                    ), REQUEST_CODE
-                )
-            }
+            else
+                ActivityCompat.requestPermissions(this, arrayOf(perm), REQUEST_CODE);
             return false
         }
         return true
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode:
-        Int, permissions: Array<String>, grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult
+    (
+        requestCode : Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    )
+    {
         super.onRequestPermissionsResult(
             requestCode, permissions,
             grantResults
