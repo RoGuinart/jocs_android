@@ -1,16 +1,15 @@
-package com.example.jocs_guinart
+package com.example.jocs_guinart.Menus
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Radio
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.RadioButton
-import android.widget.Toast
+import com.example.jocs_guinart.Games.Othello
+import com.example.jocs_guinart.R
 import java.util.*
 
-class TresEnRatllaMenu : AppCompatActivity() {
+class OthelloMenu : AppCompatActivity() {
 
     private lateinit var plr : RadioButton;
     private lateinit var mch : RadioButton;
@@ -18,7 +17,7 @@ class TresEnRatllaMenu : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tres_en_ratlla_menu);
+        setContentView(R.layout.activity_othello_menu);
 
         val start: Button = findViewById(R.id.start);
         val back : Button = findViewById(R.id.back);
@@ -30,7 +29,7 @@ class TresEnRatllaMenu : AppCompatActivity() {
         }
 
         start.setOnClickListener(){
-            val intent= Intent(this, TresEnRatlla::class.java);
+            val intent= Intent(this, Othello::class.java);
             intent.putExtra("playerFirst", getChoice());
             intent.putExtra("UID", "");
             intent.putExtra("TOT_GAMES", 0);

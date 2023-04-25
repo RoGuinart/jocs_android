@@ -1,6 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_green"
+    tools:context=".Ranking">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hFarBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hFarTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".65" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vFarLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vFarRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vMid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/vFarLeft"
+        app:layout_constraintEnd_toEndOf="@id/vFarRight"
+        app:layout_constraintTop_toTopOf="@id/hTop"
+        app:layout_constraintBottom_toBottomOf="@id/hBottom"
+        android:scaleType="fitXY"/>
+
+
+
+    <Button
+        android:id="@+id/bBack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="BACK"
+        app:layout_constraintStart_toStartOf="@id/vFarLeft"
+        app:layout_constraintEnd_toEndOf="@id/vMid"
+        app:layout_constraintTop_toTopOf="@id/hFarTop"
+        app:layout_constraintBottom_toBottomOf="@id/hTop"
+        android:scaleType="fitXY"/>
+    <Button
+        android:id="@+id/bSwap"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Rank by total wins"
+        app:layout_constraintStart_toStartOf="@id/vMid"
+        app:layout_constraintEnd_toEndOf="@id/vFarRight"
+        app:layout_constraintTop_toTopOf="@id/hFarTop"
+        app:layout_constraintBottom_toBottomOf="@id/hTop"
+        android:scaleType="fitXY"/>
+
+
+    <Spinner
+        android:id="@+id/rankingGames"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/custom_button"
+        android:text="GAMES"
+        android:contentDescription="GAMES"
+        app:layout_constraintBottom_toBottomOf="@id/hFarBottom"
+        app:layout_constraintEnd_toEndOf="@id/vFarRight"
+        app:layout_constraintStart_toStartOf="@id/vFarLeft"
+        app:layout_constraintTop_toTopOf="@id/hBottom"
+        android:scaleType="fitXY"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.jocs_guinart
+package com.example.jocs_guinart.Games
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +8,10 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import com.example.jocs_guinart.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import org.w3c.dom.Text
 import java.util.Random
 
 class TresEnRatlla : AppCompatActivity() {
@@ -187,7 +187,7 @@ class TresEnRatlla : AppCompatActivity() {
         table[posX][posY] = player;
         playerTurn = !playerTurn;
 
-        posBtn.setImageResource(if(player == 1) R.drawable.ter_x  else R.drawable.ter_o);
+        posBtn.setImageResource(if(player == 1) R.drawable.ter_x else R.drawable.ter_o);
 
         changeTurn();
     }

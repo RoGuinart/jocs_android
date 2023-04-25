@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_green"
-    tools:context=".TresEnRatlla">
+    tools:context=".Games.TresEnRatlla">
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v0"
+        android:id="@+id/hBottom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.13132694" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hMidTop"
+        android:id="@+id/hTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -133,7 +133,7 @@
         app:layout_constraintBottom_toBottomOf="@id/hBot"
         app:layout_constraintEnd_toEndOf="@id/h8"
         app:layout_constraintStart_toStartOf="@id/h0"
-        app:layout_constraintTop_toTopOf="@id/v0"
+        app:layout_constraintTop_toTopOf="@id/hBottom"
         app:srcCompat="@drawable/ter_table"
         android:scaleType="fitXY"/>
 
@@ -143,10 +143,10 @@
         android:layout_height="0dp"
         android:background="@color/t_dark"
         android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="@id/hMidTop"
+        app:layout_constraintBottom_toBottomOf="@id/hTop"
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
         app:layout_constraintStart_toStartOf="@id/h0"
-        app:layout_constraintTop_toTopOf="@id/v0"
+        app:layout_constraintTop_toTopOf="@id/hBottom"
         app:srcCompat="@drawable/transparent" />
 
     <ImageButton
@@ -154,10 +154,10 @@
         android:background="@color/t_light"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/hMidTop"
+        app:layout_constraintBottom_toBottomOf="@id/hTop"
         app:layout_constraintEnd_toEndOf="@id/vMidRight"
         app:layout_constraintStart_toStartOf="@id/vMidLeft"
-        app:layout_constraintTop_toTopOf="@id/v0"
+        app:layout_constraintTop_toTopOf="@id/hBottom"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
 
@@ -168,8 +168,8 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
         app:layout_constraintEnd_toEndOf="@id/h8"
-        app:layout_constraintTop_toTopOf="@id/v0"
-        app:layout_constraintBottom_toBottomOf="@id/hMidTop"
+        app:layout_constraintTop_toTopOf="@id/hBottom"
+        app:layout_constraintBottom_toBottomOf="@id/hTop"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY"/>
 
@@ -181,7 +181,7 @@
         app:layout_constraintBottom_toBottomOf="@id/hMidBot"
         app:layout_constraintEnd_toEndOf="@id/vMidLeft"
         app:layout_constraintStart_toStartOf="@id/h0"
-        app:layout_constraintTop_toTopOf="@id/hMidTop"
+        app:layout_constraintTop_toTopOf="@id/hTop"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY" />
 
@@ -192,7 +192,7 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/vMidLeft"
         app:layout_constraintEnd_toEndOf="@id/vMidRight"
-        app:layout_constraintTop_toTopOf="@id/hMidTop"
+        app:layout_constraintTop_toTopOf="@id/hTop"
         app:layout_constraintBottom_toBottomOf="@id/hMidBot"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY" />
@@ -205,7 +205,7 @@
         app:layout_constraintBottom_toBottomOf="@id/hMidBot"
         app:layout_constraintEnd_toEndOf="@id/h8"
         app:layout_constraintStart_toStartOf="@id/vMidRight"
-        app:layout_constraintTop_toTopOf="@id/hMidTop"
+        app:layout_constraintTop_toTopOf="@id/hTop"
         app:srcCompat="@drawable/transparent"
         android:scaleType="fitXY" />
 

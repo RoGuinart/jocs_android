@@ -1,5 +1,6 @@
-package com.example.jocs_guinart
+package com.example.jocs_guinart.Games
 
+import com.example.jocs_guinart.R
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,12 +9,12 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
+import com.example.jocs_guinart.DIR
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
-enum class POS
+enum class OTH_POS
 {
     EMPTY,
     AVAILABLE,
@@ -21,21 +22,16 @@ enum class POS
     BLACK
 };
 
-enum class GOAL
+enum class OTH_GOAL
 {
     VENI, // Venir: trobar posicions disponibles
     VIDI, // Veure: trobar el millor moviment
     VICI  // Vèncer: executar el moviment
 }
-enum class DIR
-{
-    NW, N, NE,
-    W,      E,
-    SW, S, SE
-}
+
 class Othello() : AppCompatActivity() {
 
-    private var table : Array<Array<POS>> = Array(8) { Array<POS>(8) { POS.EMPTY } };
+    private var table : Array<Array<OTH_POS>> = Array(8) { Array<OTH_POS>(8) { OTH_POS.EMPTY } };
     private lateinit var btns : Array<Array<ImageButton>>;// = Array(8) { Array<ImageButton>(8){ null } }; // ImageButton btn[8][8];
     private var playerTurn : Boolean = true;
     private var userFirst : Boolean = true;
@@ -68,13 +64,13 @@ class Othello() : AppCompatActivity() {
         setupBtn();
 
         //Posicions inicials
-        changePos(3, 3, POS.BLACK);
-        changePos(3, 4, POS.WHITE);
-        changePos(4, 3, POS.WHITE);
-        changePos(4, 4, POS.BLACK);
+        changePos(3, 3, OTH_POS.BLACK);
+        changePos(3, 4, OTH_POS.WHITE);
+        changePos(4, 3, OTH_POS.WHITE);
+        changePos(4, 4, OTH_POS.BLACK);
 
-        checkPosition(3, 3, GOAL.VENI);
-        checkPosition(4, 4, GOAL.VENI)
+        checkPosition(3, 3, OTH_GOAL.VENI);
+        checkPosition(4, 4, OTH_GOAL.VENI)
 
         if(!playerTurn)
             machineLogic();
@@ -84,10 +80,10 @@ class Othello() : AppCompatActivity() {
      *  Retorna si el jugador és blanques o negres.
      *  A l'Othello, les negres sempre són les primeres.
      */
-    private fun getCurPlayer(): POS
+    private fun getCurPlayer(): OTH_POS
     {
-        return if(userFirst) if(playerTurn) POS.BLACK else POS.WHITE;
-               else          if(playerTurn) POS.WHITE else POS.BLACK;
+        return if(userFirst) if(playerTurn) OTH_POS.BLACK else OTH_POS.WHITE;
+               else          if(playerTurn) OTH_POS.WHITE else OTH_POS.BLACK;
     }
 
     /**
@@ -122,30 +118,30 @@ class Othello() : AppCompatActivity() {
      *  Canvia l'estat d'una peça.
      *  En el cas de POS.AVAILABLE, només canviarà gràficament si és el torn del jugador.
      */
-    private fun changePos(i: Int, j : Int, newState : POS)
+    private fun changePos(i: Int, j : Int, newState : OTH_POS)
     {
         table[i][j] = newState;
 
         when(newState)
         {
-            POS.WHITE     ->
+            OTH_POS.WHITE     ->
             {
                 btns[i][j].setImageResource(R.drawable.white);
                 btns[i][j].isEnabled = false;
             }
-            POS.BLACK     ->
+            OTH_POS.BLACK     ->
             {
                 btns[i][j].setImageResource(R.drawable.black)
                 btns[i][j].isEnabled = false;
             }
-            POS.AVAILABLE ->
+            OTH_POS.AVAILABLE ->
             {
                 if(playerTurn) { // No ho ensenyis quan sigui el torn de la màquina
                     btns[i][j].setImageResource(R.drawable.custom_button)
                     btns[i][j].isEnabled = true;
                 }
             }
-            POS.EMPTY     ->
+            OTH_POS.EMPTY     ->
             {
                 btns[i][j].setImageResource(R.drawable.transparent)
                 btns[i][j].isEnabled = false;
@@ -173,16 +169,16 @@ class Othello() : AppCompatActivity() {
             j = 0;
             while (j < 8)
             {
-                if(table[i][j] == POS.AVAILABLE)
+                if(table[i][j] == OTH_POS.AVAILABLE)
                 {
-                    changePos(i, j, POS.EMPTY);
+                    changePos(i, j, OTH_POS.EMPTY);
                 }
                 j++;
             }
             i++;
         }
 
-        val curPlayer : POS = getCurPlayer();
+        val curPlayer : OTH_POS = getCurPlayer();
 
         i = 0;
         var canMove : Boolean = false;
@@ -193,7 +189,7 @@ class Othello() : AppCompatActivity() {
             while(j < table[0].size)
             {
                 if(table[i][j] == curPlayer) {
-                    if(checkPosition(i, j, GOAL.VENI) > 0) // Comprova cada fitxa del jugador a qui li toca
+                    if(checkPosition(i, j, OTH_GOAL.VENI) > 0) // Comprova cada fitxa del jugador a qui li toca
                         canMove = true;
                 }
                 j++;
@@ -226,11 +222,11 @@ class Othello() : AppCompatActivity() {
      *              en el cas que goal == VIDI, serà el nombre de fitxes que es mourien amb aquesta jugada.
      *              En tots casos, retorna -1 en error.
      */
-    private fun checkPosition(i : Int, j : Int, goal : GOAL) : Int
+    private fun checkPosition(i : Int, j : Int, goal : OTH_GOAL) : Int
     {
         val curPlayer = getCurPlayer();
 
-        val rival : POS = if(curPlayer == POS.BLACK) POS.WHITE else POS.BLACK;
+        val rival : OTH_POS = if(curPlayer == OTH_POS.BLACK) OTH_POS.WHITE else OTH_POS.BLACK;
         var res : Int = 0;
 
         if( i > 0 ) // Primera fila
@@ -294,9 +290,9 @@ class Othello() : AppCompatActivity() {
     /**
      * Lògica de cada posició vora la fitxa trobada. Aquesta funció evita repetir el seu codi vuit vegades.
      */
-    private fun chkPosLogic(i : Int, j : Int, goal : GOAL, dir : DIR) : Int
+    private fun chkPosLogic(i : Int, j : Int, goal : OTH_GOAL, dir : DIR) : Int
     {
-        val rival = if(getCurPlayer() == POS.BLACK) POS.WHITE else POS.BLACK;
+        val rival = if(getCurPlayer() == OTH_POS.BLACK) OTH_POS.WHITE else OTH_POS.BLACK;
         val end = followPiece(rival, i, j, dir);
         val endI : Int = end/8;
         val endJ : Int = end%8;
@@ -308,15 +304,15 @@ class Othello() : AppCompatActivity() {
         };
         when(goal)
         {
-            GOAL.VENI -> {
-                if(table[endI][endJ] == POS.EMPTY)
+            OTH_GOAL.VENI -> {
+                if(table[endI][endJ] == OTH_POS.EMPTY)
                 {
-                    changePos(endI, endJ, POS.AVAILABLE);
+                    changePos(endI, endJ, OTH_POS.AVAILABLE);
                     return 1;
                 }
             }
-            GOAL.VIDI -> return countPieces(i, j, endI, endJ);
-            GOAL.VICI ->  turnPieces(i, j, endI, endJ);
+            OTH_GOAL.VIDI -> return countPieces(i, j, endI, endJ);
+            OTH_GOAL.VICI ->  turnPieces(i, j, endI, endJ);
         }
         return 0;
     }
@@ -330,7 +326,7 @@ class Othello() : AppCompatActivity() {
      *  @return Número indicant la posició on acaba la seqüència de peces enemigues, com i*8+j
      *          Si troba el final del taulell, retorna -1
      */
-    private fun followPiece(rival : POS, curI : Int, curJ : Int, direction : DIR): Int
+    private fun followPiece(rival : OTH_POS, curI : Int, curJ : Int, direction : DIR): Int
     {
 
         //Direcció de startPos a endPos
@@ -365,14 +361,14 @@ class Othello() : AppCompatActivity() {
     private fun tapButton(i : Int, j : Int)
     {
         btns[i][j].isEnabled = false;
-        if(table[i][j] != POS.AVAILABLE)
+        if(table[i][j] != OTH_POS.AVAILABLE)
         {
             Log.e("ERR", "Posició invàlida");
             return;
         }
 
         changePos(i, j, getCurPlayer()); // Col·loca una fitxa a la posició
-        checkPosition(i, j, GOAL.VICI);  // Gira les fitxes que es poden girar
+        checkPosition(i, j, OTH_GOAL.VICI);  // Gira les fitxes que es poden girar
 
         newTurn();
     }
@@ -455,16 +451,16 @@ class Othello() : AppCompatActivity() {
             j = 0
             while(j < table[0].size)
             {
-                if(table[i][j] == POS.AVAILABLE)
+                if(table[i][j] == OTH_POS.AVAILABLE)
                 {
-                    curMov = checkPosition(i, j, GOAL.VIDI);
+                    curMov = checkPosition(i, j, OTH_GOAL.VIDI);
                     if(curMov > bestMov)
                     {
                         bestMov = curMov;
                         bestPosI = i;
                         bestPosJ = j;
                     }
-                } else if(table[i][j] == POS.EMPTY)
+                } else if(table[i][j] == OTH_POS.EMPTY)
                     count++;
                 j++
             }
@@ -499,9 +495,9 @@ class Othello() : AppCompatActivity() {
             j = 0;
             while(j < table[0].size)
             {
-                if(table[i][j] == POS.AVAILABLE) changePos(i, j, POS.EMPTY);
-                if(table[i][j] == POS.BLACK) black++;
-                if(table[i][j] == POS.WHITE) white++;
+                if(table[i][j] == OTH_POS.AVAILABLE) changePos(i, j, OTH_POS.EMPTY);
+                if(table[i][j] == OTH_POS.BLACK) black++;
+                if(table[i][j] == OTH_POS.WHITE) white++;
 
                 j++;
             }

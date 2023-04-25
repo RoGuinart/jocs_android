@@ -1,4 +1,4 @@
-package com.example.jocs_guinart
+package com.example.jocs_guinart.Menus
 
 import android.app.AlertDialog
 import android.content.ContentValues
@@ -21,6 +21,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.jocs_guinart.*
+import com.example.jocs_guinart.R
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
@@ -109,7 +111,7 @@ class MainMenu : AppCompatActivity() {
             Toast.makeText(this, "Credits", Toast.LENGTH_SHORT).show();
         }
         PuntuacionsBtn.setOnClickListener() {
-            Toast.makeText(this, "Puntuacions", Toast.LENGTH_SHORT).show();
+            startActivity(Intent(this, Ranking::class.java));
         }
         editarBtn.setOnClickListener() {
             canviaLaImatge();
@@ -175,9 +177,8 @@ class MainMenu : AppCompatActivity() {
                             });
 
                         return;
-                    }
-
-                    Log.e("ERROR", "ERROR NO TROBAT MAIL");
+                    } else
+                        Log.e("ERROR", "ERROR NO TROBAT MAIL");
                 }
             }
 
@@ -185,14 +186,11 @@ class MainMenu : AppCompatActivity() {
                 Log.e("ERROR", "ERROR DATABASE CANCEL");
             }
         });
-
-        //Imatge perfil
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val REQUEST_CODE = 201
+        val REQUEST_CODE = 201;
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
             if(data?.data != null)
                 imatgeUri = data.data!!;

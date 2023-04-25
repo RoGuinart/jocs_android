@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/rImg"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/def_player"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/rUid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="UID"
+        app:layout_constraintTop_toTopOf="@id/rImg"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/rName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        app:layout_constraintTop_toTopOf="@id/rImg"
+        tools:text="USERNAME" />
+
+    <TextView
+        android:id="@+id/rGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        app:layout_constraintTop_toBottomOf="@id/rName"
+        tools:text="TOT_GAMES" />
+
+    <TextView
+        android:id="@+id/rGamesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        app:layout_constraintTop_toBottomOf="@id/rName"
+        tools:text="TOT_GAMES"
+        android:gravity="center"
+        android:text="GAMES"/>
+
+    <TextView
+        android:id="@+id/rWins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        app:layout_constraintTop_toBottomOf="@id/rName"
+        android:gravity="center"
+        tools:text="WINS" />
+
+    <TextView
+        android:id="@+id/rWinsTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="152dp"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        app:layout_constraintTop_toBottomOf="@id/rName"
+        tools:text="WINS"
+        android:text="WINS"/>
+
+    <TextView
+        android:id="@+id/rLosses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="268dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        app:layout_constraintTop_toBottomOf="@id/rName"
+        tools:text="LOSSES" />
+
+    <TextView
+        android:id="@+id/rLossesTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="268dp"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toEndOf="@id/rImg"
+        app:layout_constraintTop_toBottomOf="@id/rName"
+        tools:text="LOSSES"
+        android:text="LOSSES"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

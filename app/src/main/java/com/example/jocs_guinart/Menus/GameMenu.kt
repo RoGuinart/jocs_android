@@ -1,10 +1,11 @@
-package com.example.jocs_guinart
+package com.example.jocs_guinart.Menus
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
+import com.example.jocs_guinart.R
 
 class GameMenu : AppCompatActivity() {
     private var NOM: String =""
@@ -12,18 +13,14 @@ class GameMenu : AppCompatActivity() {
     private var UID: String=""
     private var NIVELL: String=""
 
-    //lateinit var penjat : ImageButton;
-    //lateinit var tresenratlla : ImageButton;
-    //lateinit var reversi : ImageButton;
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_menu)
 
-        var penjat: ImageButton = findViewById(R.id.penjat)
-        var tresenratlla : ImageButton= findViewById(R.id.tresenratlla)
-        var reversi: ImageButton = findViewById(R.id.reversi)
+        val penjat: ImageButton = findViewById(R.id.penjat)
+        val tresenratlla : ImageButton= findViewById(R.id.tresenratlla)
+        val reversi: ImageButton = findViewById(R.id.reversi)
 
         penjat.setOnClickListener(){
             Toast.makeText(this,"penjat", Toast.LENGTH_SHORT).show();
