@@ -1,12 +1,12 @@
-package com.example.jocs_guinart.Games
+package com.example.jocs_guinart.Menus
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.jocs_guinart.R
 
-class Penjat : AppCompatActivity() {
+class DamesMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_penjat)
+        setContentView(R.layout.activity_dames_menu)
     }
 }

@@ -103,7 +103,8 @@ class Ranking : AppCompatActivity()
         {
             GAMES.TRES_EN_RATLLA -> "TRES EN RATLLA";
             GAMES.OTHELLO -> "OTHELLO";
-            GAMES.PENJAT -> "PENJAT";
+            GAMES.PENJAT -> "PENJAT";   // no l'he fet
+            GAMES.DAMES -> "DAMES";     // no l'he fet
         };
         if(newGameStr == gameStr)
             return; //No hem de fer res

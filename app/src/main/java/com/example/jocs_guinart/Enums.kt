@@ -11,5 +11,14 @@ enum class GAMES
 {
     TRES_EN_RATLLA,
     OTHELLO,
-    PENJAT
+    PENJAT,
+    DAMES
 }
+
+enum class TBL_POS // Posicions d'un taulell. Othello, dames
+{
+    EMPTY,
+    AVAILABLE,
+    WHITE,
+    BLACK
+};

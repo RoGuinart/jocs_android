@@ -16,6 +16,12 @@
         android:theme="@style/Theme.Jocs_Guinart"
         tools:targetApi="31">
         <activity
+            android:name=".DamesMenu"
+            android:exported="false" />
+        <activity
+            android:name=".Dames"
+            android:exported="false" />
+        <activity
             android:name=".Games.Penjat"
             android:exported="false" />
         <activity

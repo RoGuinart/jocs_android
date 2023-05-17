@@ -305,7 +305,7 @@
       app:layout_constraintStart_toStartOf="@id/h0"
       app:layout_constraintTop_toTopOf="@id/backTop" />
 
-  <ImageView
+  <!--ImageView
       android:id="@+id/table"
       android:layout_width="0dp"
       android:layout_height="0dp"
@@ -313,7 +313,7 @@
       app:layout_constraintEnd_toEndOf="@id/h8"
       app:layout_constraintStart_toStartOf="@id/h0"
       app:layout_constraintTop_toTopOf="@id/hBottom"
-      app:srcCompat="@drawable/transparent" />
+      app:srcCompat="@drawable/transparent" /-->
 
 
   <!--  BUTTONS  -->

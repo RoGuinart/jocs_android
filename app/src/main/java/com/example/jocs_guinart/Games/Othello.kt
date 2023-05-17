@@ -10,17 +10,12 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.example.jocs_guinart.DIR
+import com.example.jocs_guinart.TBL_POS
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
-enum class OTH_POS
-{
-    EMPTY,
-    AVAILABLE,
-    WHITE,
-    BLACK
-};
+
 
 enum class OTH_GOAL
 {
@@ -31,7 +26,7 @@ enum class OTH_GOAL
 
 class Othello() : AppCompatActivity() {
 
-    private var table : Array<Array<OTH_POS>> = Array(8) { Array<OTH_POS>(8) { OTH_POS.EMPTY } };
+    private var table : Array<Array<TBL_POS>> = Array(8) { Array<TBL_POS>(8) { TBL_POS.EMPTY } };
     private lateinit var btns : Array<Array<ImageButton>>;// = Array(8) { Array<ImageButton>(8){ null } }; // ImageButton btn[8][8];
     private var playerTurn : Boolean = true;
     private var userFirst : Boolean = true;
@@ -64,10 +59,10 @@ class Othello() : AppCompatActivity() {
         setupBtn();
 
         //Posicions inicials
-        changePos(3, 3, OTH_POS.BLACK);
-        changePos(3, 4, OTH_POS.WHITE);
-        changePos(4, 3, OTH_POS.WHITE);
-        changePos(4, 4, OTH_POS.BLACK);
+        changePos(3, 3, TBL_POS.BLACK);
+        changePos(3, 4, TBL_POS.WHITE);
+        changePos(4, 3, TBL_POS.WHITE);
+        changePos(4, 4, TBL_POS.BLACK);
 
         checkPosition(3, 3, OTH_GOAL.VENI);
         checkPosition(4, 4, OTH_GOAL.VENI)
@@ -80,10 +75,10 @@ class Othello() : AppCompatActivity() {
      *  Retorna si el jugador és blanques o negres.
      *  A l'Othello, les negres sempre són les primeres.
      */
-    private fun getCurPlayer(): OTH_POS
+    private fun getCurPlayer(): TBL_POS
     {
-        return if(userFirst) if(playerTurn) OTH_POS.BLACK else OTH_POS.WHITE;
-               else          if(playerTurn) OTH_POS.WHITE else OTH_POS.BLACK;
+        return if(userFirst) if(playerTurn) TBL_POS.BLACK else TBL_POS.WHITE;
+               else          if(playerTurn) TBL_POS.WHITE else TBL_POS.BLACK;
     }
 
     /**
@@ -118,30 +113,30 @@ class Othello() : AppCompatActivity() {
      *  Canvia l'estat d'una peça.
      *  En el cas de POS.AVAILABLE, només canviarà gràficament si és el torn del jugador.
      */
-    private fun changePos(i: Int, j : Int, newState : OTH_POS)
+    private fun changePos(i: Int, j : Int, newState : TBL_POS)
     {
         table[i][j] = newState;
 
         when(newState)
         {
-            OTH_POS.WHITE     ->
+            TBL_POS.WHITE     ->
             {
                 btns[i][j].setImageResource(R.drawable.white);
                 btns[i][j].isEnabled = false;
             }
-            OTH_POS.BLACK     ->
+            TBL_POS.BLACK     ->
             {
                 btns[i][j].setImageResource(R.drawable.black)
                 btns[i][j].isEnabled = false;
             }
-            OTH_POS.AVAILABLE ->
+            TBL_POS.AVAILABLE ->
             {
                 if(playerTurn) { // No ho ensenyis quan sigui el torn de la màquina
                     btns[i][j].setImageResource(R.drawable.custom_button)
                     btns[i][j].isEnabled = true;
                 }
             }
-            OTH_POS.EMPTY     ->
+            TBL_POS.EMPTY     ->
             {
                 btns[i][j].setImageResource(R.drawable.transparent)
                 btns[i][j].isEnabled = false;
@@ -169,16 +164,16 @@ class Othello() : AppCompatActivity() {
             j = 0;
             while (j < 8)
             {
-                if(table[i][j] == OTH_POS.AVAILABLE)
+                if(table[i][j] == TBL_POS.AVAILABLE)
                 {
-                    changePos(i, j, OTH_POS.EMPTY);
+                    changePos(i, j, TBL_POS.EMPTY);
                 }
                 j++;
             }
             i++;
         }
 
-        val curPlayer : OTH_POS = getCurPlayer();
+        val curPlayer : TBL_POS = getCurPlayer();
 
         i = 0;
         var canMove : Boolean = false;
@@ -226,7 +221,7 @@ class Othello() : AppCompatActivity() {
     {
         val curPlayer = getCurPlayer();
 
-        val rival : OTH_POS = if(curPlayer == OTH_POS.BLACK) OTH_POS.WHITE else OTH_POS.BLACK;
+        val rival : TBL_POS = if(curPlayer == TBL_POS.BLACK) TBL_POS.WHITE else TBL_POS.BLACK;
         var res : Int = 0;
 
         if( i > 0 ) // Primera fila
@@ -292,7 +287,7 @@ class Othello() : AppCompatActivity() {
      */
     private fun chkPosLogic(i : Int, j : Int, goal : OTH_GOAL, dir : DIR) : Int
     {
-        val rival = if(getCurPlayer() == OTH_POS.BLACK) OTH_POS.WHITE else OTH_POS.BLACK;
+        val rival = if(getCurPlayer() == TBL_POS.BLACK) TBL_POS.WHITE else TBL_POS.BLACK;
         val end = followPiece(rival, i, j, dir);
         val endI : Int = end/8;
         val endJ : Int = end%8;
@@ -305,9 +300,9 @@ class Othello() : AppCompatActivity() {
         when(goal)
         {
             OTH_GOAL.VENI -> {
-                if(table[endI][endJ] == OTH_POS.EMPTY)
+                if(table[endI][endJ] == TBL_POS.EMPTY)
                 {
-                    changePos(endI, endJ, OTH_POS.AVAILABLE);
+                    changePos(endI, endJ, TBL_POS.AVAILABLE);
                     return 1;
                 }
             }
@@ -326,7 +321,7 @@ class Othello() : AppCompatActivity() {
      *  @return Número indicant la posició on acaba la seqüència de peces enemigues, com i*8+j
      *          Si troba el final del taulell, retorna -1
      */
-    private fun followPiece(rival : OTH_POS, curI : Int, curJ : Int, direction : DIR): Int
+    private fun followPiece(rival : TBL_POS, curI : Int, curJ : Int, direction : DIR): Int
     {
 
         //Direcció de startPos a endPos
@@ -361,7 +356,7 @@ class Othello() : AppCompatActivity() {
     private fun tapButton(i : Int, j : Int)
     {
         btns[i][j].isEnabled = false;
-        if(table[i][j] != OTH_POS.AVAILABLE)
+        if(table[i][j] != TBL_POS.AVAILABLE)
         {
             Log.e("ERR", "Posició invàlida");
             return;
@@ -451,7 +446,7 @@ class Othello() : AppCompatActivity() {
             j = 0
             while(j < table[0].size)
             {
-                if(table[i][j] == OTH_POS.AVAILABLE)
+                if(table[i][j] == TBL_POS.AVAILABLE)
                 {
                     curMov = checkPosition(i, j, OTH_GOAL.VIDI);
                     if(curMov > bestMov)
@@ -460,7 +455,7 @@ class Othello() : AppCompatActivity() {
                         bestPosI = i;
                         bestPosJ = j;
                     }
-                } else if(table[i][j] == OTH_POS.EMPTY)
+                } else if(table[i][j] == TBL_POS.EMPTY)
                     count++;
                 j++
             }
@@ -495,9 +490,9 @@ class Othello() : AppCompatActivity() {
             j = 0;
             while(j < table[0].size)
             {
-                if(table[i][j] == OTH_POS.AVAILABLE) changePos(i, j, OTH_POS.EMPTY);
-                if(table[i][j] == OTH_POS.BLACK) black++;
-                if(table[i][j] == OTH_POS.WHITE) white++;
+                if(table[i][j] == TBL_POS.AVAILABLE) changePos(i, j, TBL_POS.EMPTY);
+                if(table[i][j] == TBL_POS.BLACK) black++;
+                if(table[i][j] == TBL_POS.WHITE) white++;
 
                 j++;
             }
